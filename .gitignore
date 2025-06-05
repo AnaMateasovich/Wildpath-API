@@ -1,0 +1,23 @@
+# Ignorar logs de error de Java
+hs_err_pid*.log
+*.log
+
+# Ignorar target
+target/
+
+# Ignorar el application.properties con credenciales
+/src/main/resources/application.properties
+
+# Maven wrapper jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDEs
+.idea/
+.vscode/
+.nb-gradle/
+nbproject/private/
+.build/
+*.iml
+*.iws
+
+uploads
