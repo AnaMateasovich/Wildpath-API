@@ -58,6 +58,24 @@ public class CategoryService {
     }
 
     public void deleteById(Long id) {
+        Category category = categoryRepository.findById(id)
+                        .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        String src = category.getSrc();
+        if (src != null && !src.isBlank()) {
+
+            Path path = Paths.get(System.getProperty("user.dir"))
+                    .resolve(src.startsWith("/") ? src.substring(1) : src)
+                    .normalize();
+
+            System.out.println("Intentando eliminar imagen: " + path);
+
+            try {
+                Files.deleteIfExists(path);
+            } catch (IOException e) {
+                System.err.println("Image couldn’t be deleted: " + e.getMessage());
+            }
+        }
         categoryRepository.deleteById(id);
     }
 }

@@ -77,7 +77,44 @@ public class PackageIncludesService {
         packageIncludeRepository.deleteById(id);
     }
 
-    public List<PackageInclude> findByPackageId(Long packageId) {
-        return packageIncludeRepository.findByAPackage_Id(packageId);
+    public List<PackageIncludeDTO> findByPackageId(Long packageId) {
+        List<PackageInclude> includes = packageIncludeRepository.findByAPackage_Id(packageId);
+        List<PackageIncludeDTO> dtoList = new ArrayList<>();
+
+        for(PackageInclude include : includes) {
+            PackageIncludeDTO dto = new PackageIncludeDTO();
+            dto.setId(include.getId());
+            dto.setPackageId(include.getAPackage().getId());
+            dto.setDescription(include.getDescription());
+            dto.setIconSrc(include.getIconSrc());
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
+
+    public PackageInclude updatePackageInclude(PackageIncludeDTO dto, MultipartFile iconFile) {
+        PackageInclude include = packageIncludeRepository.findById(dto.getId())
+                .orElseThrow(() -> new RuntimeException("Package include not found"));
+
+        include.setDescription(dto.getDescription());
+
+        if (iconFile != null && !iconFile.isEmpty()) {
+            String uploadDir = System.getProperty("user.dir") + "/uploads/icons/";
+            File directory = new File(uploadDir);
+            if (!directory.exists()) directory.mkdirs();
+
+            String originalName = iconFile.getOriginalFilename();
+            String newFileName = UUID.randomUUID() + "_" + originalName;
+            Path path = Paths.get(uploadDir + newFileName);
+
+            try {
+                Files.write(path, iconFile.getBytes());
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to save icon", e);
+            }
+            include.setIconSrc("/uploads/icons/" + newFileName);
+        }
+        return packageIncludeRepository.save(include);
+    }
+
 }

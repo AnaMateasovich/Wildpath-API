@@ -1,5 +1,6 @@
 package com.example.wildpath.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class PackageInclude {
     @Column(name = "id")
     private Long id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "package_id", nullable = false)
     private TravelPackage APackage;

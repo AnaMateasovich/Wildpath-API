@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -24,6 +25,7 @@ public class ImageService {
 
     private final IImageRepository imageRepository;
     private final ITravelPackageRepository packageRepository;
+
 
     public ImageService(IImageRepository imageRepository, ITravelPackageRepository packageRepository) {
         this.imageRepository = imageRepository;
@@ -98,6 +100,12 @@ public class ImageService {
 
     public List<Image> findByPackageId(Long packageId) {
         return imageRepository.findByAPackage_Id(packageId);
+    }
+
+    public Map<Long, List<ImageDTO>> findImagesGroupedByPackageIds(List<Long> packageIds) {
+        return imageRepository.findImagesByPackageIds(packageIds).stream()
+                .map(ImageMapper::toDTO)
+                .collect(Collectors.groupingBy(ImageDTO::getPackageId));
     }
 
     public List<ImageDTO> findImagesDTOsByPackageId(Long packageId) {

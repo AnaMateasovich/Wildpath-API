@@ -82,7 +82,7 @@ public class FormSubmissionSteps {
 
         // Agregar una fecha disponiblw
         wildPathFullForm.getDateAvailableDate().sendKeys(TestData.DATE_AVAILABLE1);
-        wildPathFullForm.getDateAvailableCapacity().sendKeys(TestData.DATE_AVAILABLE_CAPACITY1);
+        wildPathFullForm.getDateAvailableSpots().sendKeys(TestData.DATE_AVAILABLE_SPOTS1);
         wildPathFullForm.getDateAvailableButton().click();
 
         // NEXT

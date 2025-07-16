@@ -2,6 +2,8 @@ package com.example.wildpath.mapper;
 
 import com.example.wildpath.dto.ImageDTO;
 import com.example.wildpath.entity.Image;
+import com.example.wildpath.entity.TravelPackage;
+
 
 public class ImageMapper {
 
@@ -9,8 +11,8 @@ public class ImageMapper {
         ImageDTO dto = new ImageDTO();
         dto.setId(image.getId());
         dto.setName(image.getName());
-        String baseUrl = "http://localhost:8081";
-        dto.setSrc(baseUrl + image.getSrc());
+        dto.setSrc(image.getSrc());
+        dto.setPackageId(image.getAPackage().getId());
 
         return dto;
     }
@@ -19,6 +21,11 @@ public class ImageMapper {
         Image image = new Image();
         image.setName(dto.getName());
         image.setSrc(dto.getSrc());
+
+        TravelPackage travelPackage = new TravelPackage();
+        travelPackage.setId(dto.getPackageId());
+
+        image.setAPackage(travelPackage);
         return image;
     }
 }

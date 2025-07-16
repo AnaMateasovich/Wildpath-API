@@ -22,8 +22,12 @@ public class EnterpriseService {
         return enterpriseRepository.findAll();
     }
 
-    public Optional<Enterprise> findById(Long id) {
-        return enterpriseRepository.findById(id);
+    public EnterpriseDTO findById(Long id) {
+        Enterprise enterprise = enterpriseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Enterprise not found"));
+
+        EnterpriseDTO dto = EnterpriseMapper.toDTO(enterprise);
+        return dto;
     }
 
     public Enterprise createEnterprise(EnterpriseDTO dto) {

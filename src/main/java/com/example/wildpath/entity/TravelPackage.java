@@ -1,11 +1,13 @@
 package com.example.wildpath.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.List;
 
 @Entity
@@ -33,6 +35,9 @@ public class TravelPackage {
 
     @Column(name = "duration")
     private String duration;
+
+    @Column(name = "nights")
+    private Integer nights;
 
     @Lob
     @Column(name = "description", columnDefinition = "TEXT")
@@ -67,6 +72,7 @@ public class TravelPackage {
     @JoinColumn(name = "enterprise_id", nullable = false)
     private Enterprise enterprise;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "APackage")
     private List<DateAvailable> datesAvailable;
 
@@ -84,4 +90,11 @@ public class TravelPackage {
 
     @OneToMany(mappedBy = "APackage")
     private List<Requirements> requirements;
+
+    @Column(name = "average_rating")
+    private Double averageRating;
+
+    @Column(name = "total_reviews")
+    private Integer totalReviews;
+
 }

@@ -115,8 +115,8 @@ public class PageWildPathFullForm {
     public WebElement getDateAvailableDate() {
         return driver.findElement(By.id("dateAvailableDate"));
     }
-    public WebElement getDateAvailableCapacity() {
-        return driver.findElement(By.id("dateAvailableCapacity"));
+    public WebElement getDateAvailableSpots() {
+        return driver.findElement(By.id("dateAvailableSpots"));
     }
     public WebElement getDateAvailableButton() {
         return driver.findElement(By.id("dateAvailableButton"));

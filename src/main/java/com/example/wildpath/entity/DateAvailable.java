@@ -1,5 +1,7 @@
 package com.example.wildpath.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +22,7 @@ public class DateAvailable {
     @Column(name = "id")
     private Long id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "package_id",
             nullable = false,
@@ -27,9 +30,8 @@ public class DateAvailable {
             foreignKeyDefinition = "FOREIGN KEY (package_id) REFERENCES packages(id) ON DELETE CASCADE"))
     private TravelPackage APackage;
 
-    @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "capacity")
-    private Integer capacity;
+    @Column(name = "spots")
+    private Integer spots;
 }

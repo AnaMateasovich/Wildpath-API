@@ -41,9 +41,9 @@ public class TestData {
 
     // DATES AVAILABLE
     public static final String DATE_AVAILABLE1 = "2025-06-12";
-    public static final String DATE_AVAILABLE_CAPACITY1 = "14";
+    public static final String DATE_AVAILABLE_SPOTS1 = "14";
     public static final String DATE_AVAILABLE2 = "2025-07-16";
-    public static final String DATE_AVAILABLE_CAPACITY2 = "25";
+    public static final String DATE_AVAILABLE_SPOTS2 = "25";
 
     // REQUIREMENTS
     public static final String REQUIREMENT_TITLE = "Edad mínima";

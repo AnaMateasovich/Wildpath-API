@@ -1,11 +1,9 @@
 package com.example.wildpath.service;
 
 import com.example.wildpath.dto.RequirementsDTO;
-import com.example.wildpath.dto.TravelPackageDTO;
 import com.example.wildpath.entity.TravelPackage;
 import com.example.wildpath.entity.Requirements;
 import com.example.wildpath.mapper.RequirementsMapper;
-import com.example.wildpath.mapper.TravelPackageMapper;
 import com.example.wildpath.repository.ITravelPackageRepository;
 import com.example.wildpath.repository.IRequirementsRepository;
 import org.springframework.stereotype.Repository;
