@@ -78,9 +78,19 @@ public class PageWildPathFullForm {
     public WebElement getPackagePlaceInput() {
         return driver.findElement(By.id("packagePlace"));
     }
-    public WebElement getPackageDurationInput() {
-        return driver.findElement(By.id("packageDuration"));
+    public WebElement getPackageDurationDaysInput() {
+        return driver.findElement(By.id("packageDurationDays"));
     }
+    public WebElement getPackageDurationNightsInput() {
+        return driver.findElement(By.id("packageDurationNights"));
+    }
+    public WebElement getPackageDurationHoursInput() {
+        return driver.findElement(By.id("packageDurationHours"));
+    }
+    public WebElement getPackageDurationMinutesInput() {
+        return driver.findElement(By.id("packageDurationMinutes"));
+    }
+
     public WebElement getPackageInclude() {
         return driver.findElement(By.id("packageInclude"));
     }
@@ -121,6 +131,27 @@ public class PageWildPathFullForm {
     public WebElement getDateAvailableButton() {
         return driver.findElement(By.id("dateAvailableButton"));
     }
+
+    // MULTIPLE DATES
+    public WebElement getDateAvailableRangeStart() {
+        return driver.findElement(By.id("startRangeDate"));
+    }
+    public WebElement getDateAvailableRangeEnd() {
+        return driver.findElement(By.id("endRangeDate"));
+    }
+    public WebElement getDateAvailableRangeSpots() {
+        return driver.findElement(By.id("rangeSpots"));
+    }
+    public WebElement getDateAvailableRangeButtonGenerate() {
+        return driver.findElement(By.id("generateDatesButton"));
+    }
+    public WebElement getDateAvailableDayOfWeek() {
+        return driver.findElement(By.id("day-5"));
+    }
+    public WebElement getDateAvailableAddRangeButton() {
+        return driver.findElement(By.id("addRangeDatesButton"));
+    }
+
 
     // REQUIREMENTS
     public WebElement getPackageRequirementTitle() {

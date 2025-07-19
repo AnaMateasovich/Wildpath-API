@@ -28,16 +28,16 @@ public class FormSubmissionSteps {
         driver.get("http://localhost:5173/admin/actividades/crear");
 
         // Completar datos de empresa
-        /*
-        wildPathFullForm.getEnterpriseNameInput().sendKeys(TestData.ENTERPRISE_NAME);
-        wildPathFullForm.getEnterpriseCuitInput().sendKeys(TestData.ENTERPRISE_CUIT);
-        wildPathFullForm.getEnterpriseEmailInput().sendKeys(TestData.ENTERPRISE_EMAIL);
-        wildPathFullForm.getEnterprisePhoneInput().sendKeys(TestData.ENTERPRISE_PHONE);
-        wildPathFullForm.getEnterpriseAddress().sendKeys(TestData.ENTERPRISE_ADDRESS);
-        wildPathFullForm.getEnterpriseSocialMediaInput().sendKeys(TestData.ENTERPRISE_SOCIALMEDIA);
-        wildPathFullForm.getEnterpriseDescriptionInput().sendKeys(TestData.ENTERPRISE_DESCRIPTION);
-        */
-        wildPathFullForm.selectEnterpriseByName(TestData.SELECTED_ENTERPRISE);
+
+//        wildPathFullForm.getEnterpriseNameInput().sendKeys(TestData.ENTERPRISE_NAME);
+//        wildPathFullForm.getEnterpriseCuitInput().sendKeys(TestData.ENTERPRISE_CUIT);
+//        wildPathFullForm.getEnterpriseEmailInput().sendKeys(TestData.ENTERPRISE_EMAIL);
+//        wildPathFullForm.getEnterprisePhoneInput().sendKeys(TestData.ENTERPRISE_PHONE);
+//        wildPathFullForm.getEnterpriseAddress().sendKeys(TestData.ENTERPRISE_ADDRESS);
+//        wildPathFullForm.getEnterpriseSocialMediaInput().sendKeys(TestData.ENTERPRISE_SOCIALMEDIA);
+//        wildPathFullForm.getEnterpriseDescriptionInput().sendKeys(TestData.ENTERPRISE_DESCRIPTION);
+
+       wildPathFullForm.selectEnterpriseByName(TestData.SELECTED_ENTERPRISE);
 
         // NEXT
         wildPathFullForm.getNextButton().click();
@@ -47,7 +47,8 @@ public class FormSubmissionSteps {
         wildPathFullForm.getPackageDescriptionInput().sendKeys(TestData.PACKAGE_DESCRIPTION);
         wildPathFullForm.getPackageCategoryInput().sendKeys(TestData.PACKAGE_CATEGORY);
         wildPathFullForm.getPackagePlaceInput().sendKeys(TestData.PACKAGE_PLACE);
-        wildPathFullForm.getPackageDurationInput().sendKeys(TestData.PACKAGE_DURATION);
+        wildPathFullForm.getPackageDurationDaysInput().sendKeys(TestData.PACKAGE_DURATION_DAYS);
+        wildPathFullForm.getPackageDurationNightsInput().sendKeys(TestData.PACKAGE_DURATION_NIGHTS);
         wildPathFullForm.getPackageLocation().sendKeys(TestData.PACKAGE_LOCATION);
         wildPathFullForm.getPackagePrice().sendKeys(TestData.PACKAGE_PRICE_PER_PERSON);
         wildPathFullForm.getPackageDiscount().sendKeys(TestData.PACKAGE_DISCOUNT);
@@ -81,9 +82,25 @@ public class FormSubmissionSteps {
         wildPathFullForm.getNextButton().click();
 
         // Agregar una fecha disponiblw
-        wildPathFullForm.getDateAvailableDate().sendKeys(TestData.DATE_AVAILABLE1);
-        wildPathFullForm.getDateAvailableSpots().sendKeys(TestData.DATE_AVAILABLE_SPOTS1);
-        wildPathFullForm.getDateAvailableButton().click();
+//        wildPathFullForm.getDateAvailableDate().sendKeys(TestData.DATE_AVAILABLE1);
+//        wildPathFullForm.getDateAvailableSpots().sendKeys(TestData.DATE_AVAILABLE_SPOTS);
+//        wildPathFullForm.getDateAvailableButton().click();
+        wildPathFullForm.getDateAvailableRangeStart().sendKeys(TestData.DATE_AVAILABLE_START);
+        wildPathFullForm.getDateAvailableRangeEnd().sendKeys(TestData.DATE_AVAILABLE_END);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement spotsInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("rangeSpots")));
+        spotsInput.clear();
+        spotsInput.sendKeys(TestData.DATE_AVAILABLE_SPOTS);
+
+//        wildPathFullForm.getDateAvailableRangeSpots().sendKeys(TestData.DATE_AVAILABLE_SPOTS);
+        driver.findElement(By.xpath("//input[@id='day-5']/..")).click();
+
+        WebElement generateButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("generateDatesButton")));
+        generateButton.click();
+
+
+        //wildPathFullForm.getDateAvailableRangeButtonGenerate().click();
+        wildPathFullForm.getDateAvailableAddRangeButton().click();
 
         // NEXT
         wildPathFullForm.getNextButton().click();

@@ -16,11 +16,14 @@ public class TestData {
     public static final String ENTERPRISE_DESCRIPTION = "Empresa dedicada a experiencias de turismo aventura en la región andina, con más de 10 años de trayectoria.";
 
     // PACKAGE
-    public static final String PACKAGE_NAME = "Trekking al Aconcagua";
+    public static final String PACKAGE_NAME = "Trekking al Aconcagua Test Cucumber";
     public static final String PACKAGE_DESCRIPTION = "Una aventura inolvidable al techo de América. Ideal para amantes del trekking y la montaña.";
     public static final String PACKAGE_CATEGORY = "Senderismo / Trekking";
     public static final String PACKAGE_PLACE = "Parque Provincial Aconcagua";
-    public static final String PACKAGE_DURATION = "3 días / 2 noches";
+    public static final String PACKAGE_DURATION_DAYS = "3";
+    public static final String PACKAGE_DURATION_NIGHTS = "2";
+    public static final String PACKAGE_DURATION_HOURS = "2";
+    public static final String PACKAGE_DURATION_MINUTES = "20";
     public static final String PACKAGE_LOCATION = "Mendoza, Argentina";
     public static final String PACKAGE_PRICE_PER_PERSON = "35000";
     public static final String PACKAGE_DIFFICULTY = "Alta";
@@ -39,11 +42,15 @@ public class TestData {
     public static final String PACKAGE_IMAGE3 = System.getProperty("user.dir") + "/uploads/packages/1f6c3317-7d3f-43a7-83d6-2a4f318a5b43_trekking-aconcagua6.webp";
     public static final String PACKAGE_IMAGE4 = System.getProperty("user.dir") + "/uploads/packages/4bc8247c-adcb-44d0-88d1-fd740e225591_rafting-riomanso3.webp";
 
-    // DATES AVAILABLE
+    // DATES AVAILABLE ONE DATE
     public static final String DATE_AVAILABLE1 = "2025-06-12";
-    public static final String DATE_AVAILABLE_SPOTS1 = "14";
+    public static final String DATE_AVAILABLE_SPOTS = "14";
     public static final String DATE_AVAILABLE2 = "2025-07-16";
     public static final String DATE_AVAILABLE_SPOTS2 = "25";
+
+    // DATES AVAILABLE MULTIPLE DATES
+    public static final String DATE_AVAILABLE_START = "10-08-2025";
+    public static final String DATE_AVAILABLE_END = "10-09-2025";
 
     // REQUIREMENTS
     public static final String REQUIREMENT_TITLE = "Edad mínima";
