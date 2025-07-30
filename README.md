@@ -10,6 +10,5 @@ API REST desarrollada con **Spring Boot** para gestionar paquetes turísticos, u
 - JPA + Hibernate
 - MySQL
 - Maven
-- Dotenv
 - Cucumber (tests)
 - Swagger 
