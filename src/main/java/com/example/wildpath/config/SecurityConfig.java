@@ -26,16 +26,26 @@ public class SecurityConfig {
         http
                 .cors(withDefaults())
                 .csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/all/**").permitAll()
-                .requestMatchers("/auth/register", "/auth/login", "/auth/verify-account", "/auth/**").permitAll()
-                .requestMatchers("/uploads/**").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                "/auth/**",
+                                "/auth/register",
+                                "/auth/login",
+                                "/auth/verify-account"
+                        ).permitAll()
+
+                        .requestMatchers("/all/**").permitAll()
+                        .requestMatchers("/uploads/**").permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                )
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

@@ -18,6 +18,10 @@ public class WildpathApplication {
 		System.setProperty("spring.datasource.username", dotenv.get("DB_USERNAME"));
 		System.setProperty("spring.datasource.password", dotenv.get("DB_PASSWORD"));
 		System.setProperty("spring.datasource.url", dotenv.get("DB_URL"));
+		System.setProperty("frontend.url", dotenv.get("FRONTEND_URL"));
+		System.setProperty("backend.url", dotenv.get("BACKEND_URL"));
+		System.setProperty("spring.mail.username", dotenv.get("MAIL_USER"));
+		System.setProperty("spring.mail.password", dotenv.get("MAIL_PASS"));
 
 		SpringApplication.run(WildpathApplication.class, args);
 	}
